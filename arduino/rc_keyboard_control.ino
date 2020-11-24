@@ -1,8 +1,8 @@
 // assign pin num
-int right_pin = 6;
-int left_pin = 7;
-int forward_pin = 10;
-int reverse_pin = 9;
+int right_pin =5 ;
+int left_pin =6 ;
+int forward_pin =3 ;
+int reverse_pin = 4;
 
 // duration for output
 int time = 50;
@@ -29,61 +29,62 @@ void loop() {
 }
 
 void right(int time){
-  digitalWrite(right_pin, LOW);
+  digitalWrite(right_pin,LOW);
   delay(time);
 }
 
 void left(int time){
-  digitalWrite(left_pin, LOW);
+  digitalWrite(left_pin,LOW);
   delay(time);
 }
 
 void forward(int time){
-  digitalWrite(forward_pin, LOW);
+  digitalWrite(forward_pin,HIGH);
+  digitalWrite(right_pin,HIGH);
   delay(time);
 }
 
 void reverse(int time){
-  digitalWrite(reverse_pin, LOW);
+  digitalWrite(reverse_pin,HIGH);
+  digitalWrite(left_pin, HIGH);
   delay(time);
 }
 
 void forward_right(int time){
-  digitalWrite(forward_pin, LOW);
-  digitalWrite(right_pin, LOW);
+ 
+  digitalWrite(right_pin,HIGH);
   delay(time);
 }
 
 void reverse_right(int time){
-  digitalWrite(reverse_pin, LOW);
-  digitalWrite(right_pin, LOW);
+  digitalWrite(left_pin,HIGH);
   delay(time);
 }
 
 void forward_left(int time){
-  digitalWrite(forward_pin, LOW);
-  digitalWrite(left_pin, LOW);
+  digitalWrite(forward_pin,HIGH);
+  
   delay(time);
 }
 
 void reverse_left(int time){
-  digitalWrite(reverse_pin, LOW);
-  digitalWrite(left_pin, LOW);
+  digitalWrite(reverse_pin, HIGH);
+  
   delay(time);
 }
 
 void reset(){
-  digitalWrite(right_pin, HIGH);
-  digitalWrite(left_pin, HIGH);
-  digitalWrite(forward_pin, HIGH);
-  digitalWrite(reverse_pin, HIGH);
+  digitalWrite(right_pin, LOW);
+  digitalWrite(left_pin, LOW);
+  digitalWrite(forward_pin,LOW);
+  digitalWrite(reverse_pin,LOW);
 }
 
 void send_command(int command, int time){
   switch (command){
 
      //reset command
-     case 0: reset(); break;
+     case 0: reset(); break; 
 
      // single command
      case 1: forward(time); break;
